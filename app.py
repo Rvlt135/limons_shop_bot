@@ -1,13 +1,13 @@
 import os
-# import handlers
+import handlers
 from aiogram import executor, types
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from data import config
-from loader import dp, db, bot
-# import filters
+from loader import dp, bot, db
+import filters
 import logging
 
-# filters.setup(dp)
+filters.setup(dp)
 
 WEBAPP_HOST = "0.0.0.0"
 WEBAPP_PORT = int(os.environ.get("PORT", 5000))
@@ -59,8 +59,7 @@ async def on_startup(dp):
     await bot.delete_webhook()
     await bot.set_webhook(config.WEBHOOK_URL)
 
-
-async def on_shutdown():
+async def on_shutdown(message: types.Message):
     logging.warning("Shutting down..")
     await bot.delete_webhook()
     await dp.storage.close()
