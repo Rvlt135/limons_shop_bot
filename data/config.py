@@ -1,4 +1,4 @@
-BOT_TOKEN = '5292039713:AAHyGkCPcxXqCb-jhdcKftVi6vE98JfXvz4'
+BOT_TOKEN = ''
 
 PROJECT_NAME = 'liomons_bot'
 
